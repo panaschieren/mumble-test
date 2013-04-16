@@ -589,8 +589,10 @@ void MainWindow::msgChannelState(const MumbleProto::ChannelState &msg) {
 			if (l)
 				ql << l;
 		}
-		if (! ql.isEmpty())
+		if (! ql.isEmpty()) {
+			g.l->log(Log::ChannelLinked, tr("Channel Linked"));
 			pmModel->linkChannels(c, ql);
+		}
 	}
 }
 

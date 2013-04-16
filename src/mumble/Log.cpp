@@ -215,6 +215,7 @@ const char *Log::msgNames[] = {
 	QT_TRANSLATE_NOOP("Log", "User muted (other)"),
 	QT_TRANSLATE_NOOP("Log", "User Joined Channel"),
 	QT_TRANSLATE_NOOP("Log", "User Left Channel"),
+	QT_TRANSLATE_NOOP("Log", "Channel Linked"),
 	QT_TRANSLATE_NOOP("Log", "Permission Denied"),
 	QT_TRANSLATE_NOOP("Log", "Text Message")
 };
