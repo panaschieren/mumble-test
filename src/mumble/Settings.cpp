@@ -417,6 +417,7 @@ Settings::Settings() {
 	qmMessages[Log::UserKicked] = Settings::LogConsole;
 	qmMessages[Log::OtherSelfMute] = Settings::LogConsole;
 	qmMessages[Log::OtherMutedOther] = Settings::LogConsole;
+	qmMessages[Log::ChannelLinked] = Settings::LogConsole  | Settings::LogSoundfile;
 }
 
 bool Settings::doEcho() const {
