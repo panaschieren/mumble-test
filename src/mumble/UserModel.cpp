@@ -217,6 +217,7 @@ QString ModelItem::hash() const {
 UserModel::UserModel(QObject *p) : QAbstractItemModel(p) {
 	qiTalkingOff=QIcon(QLatin1String("skin:talking_off.svg"));
 	qiTalkingOn=QIcon(QLatin1String("skin:talking_on.svg"));
+	qiTalkingRecent=QIcon(QLatin1String("skin:talking_recent.svg"));
 	qiTalkingShout=QIcon(QLatin1String("skin:talking_alt.svg"));
 	qiTalkingWhisper=QIcon(QLatin1String("skin:talking_whisper.svg"));
 	qiPrioritySpeaker=QIcon(QLatin1String("skin:actions/audio-input-microphone.svg"));
@@ -381,6 +382,10 @@ QVariant UserModel::data(const QModelIndex &idx, int role) const {
 						case Settings::Shouting:
 							return qiTalkingShout;
 						case Settings::Passive:
+							if (p->isActive())
+								return qiTalkingRecent;
+							else
+								return qiTalkingOff;
 						default:
 							return qiTalkingOff;
 					}
@@ -1295,6 +1300,24 @@ void UserModel::userTalkingChanged() {
 	ClientUser *p=static_cast<ClientUser *>(sender());
 	if (!p)
 		return;
+
+	QString t_state;
+	switch (p->tsState) {
+		case Settings::Talking:
+			t_state = QString::fromLatin1("starts talking");
+			break;
+		case Settings::Whispering:
+			t_state  = QString::fromLatin1("starts whispering");
+			break;
+		case Settings::Shouting:
+			t_state  = QString::fromLatin1("starts shouting");
+			break;
+		case Settings::Passive:
+		default:
+			t_state = QString::fromLatin1("stops talking");
+	}
+	g.l->log(Log::TalkState, MainWindow::tr("%1 %2").arg(Log::formatClientUser(p, Log::Target)).arg(t_state));
+
 	QModelIndex idx = index(p);
 	emit dataChanged(idx, idx);
 	updateOverlay();

@@ -71,10 +71,10 @@ class Log : public QObject {
 		Q_OBJECT
 		Q_DISABLE_COPY(Log)
 	public:
-		enum MsgType { DebugInfo, CriticalError, Warning, Information, ServerConnected, ServerDisconnected, UserJoin, UserLeave, Recording, YouKicked, UserKicked, SelfMute, OtherSelfMute, YouMuted, YouMutedOther, OtherMutedOther, ChannelJoin, ChannelLeave, ChannelLinked, PermissionDenied, TextMessage };
+		enum MsgType { DebugInfo, CriticalError, Warning, Information, ServerConnected, ServerDisconnected, UserJoin, UserLeave, Recording, YouKicked, UserKicked, SelfMute, OtherSelfMute, YouMuted, YouMutedOther, OtherMutedOther, ChannelJoin, ChannelLeave, PermissionDenied, TextMessage, ChannelLinked, TalkState };
 		enum LogColorType { Time, Server, Privilege, Source, Target };
 		static const MsgType firstMsgType = DebugInfo;
-		static const MsgType lastMsgType = TextMessage;
+		static const MsgType lastMsgType = TalkState;
 	protected:
 		QHash<MsgType, int> qmIgnore;
 		static const char *msgNames[];

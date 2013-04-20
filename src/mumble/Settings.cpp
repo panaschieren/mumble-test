@@ -418,6 +418,7 @@ Settings::Settings() {
 	qmMessages[Log::OtherSelfMute] = Settings::LogConsole;
 	qmMessages[Log::OtherMutedOther] = Settings::LogConsole;
 	qmMessages[Log::ChannelLinked] = Settings::LogConsole  | Settings::LogSoundfile;
+	qmMessages[Log::TalkState] = Settings::LogNone;
 }
 
 bool Settings::doEcho() const {

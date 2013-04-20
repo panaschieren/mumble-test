@@ -6,6 +6,7 @@
  <file alias="mumble.icns">../../icons/mumble.icns</file>
  <file alias="mumble.osx.png">../../icons/mumble.osx.png</file>
  <file alias="talking_on.svg">../../icons/talking_on.svg</file>
+ <file alias="talking_recent.svg">../../icons/talking_recent.svg</file>
  <file alias="talking_alt.svg">../../icons/talking_alt.svg</file>
  <file alias="talking_off.svg">../../icons/talking_off.svg</file>
  <file alias="talking_whisper.svg">../../icons/talking_whisper.svg</file>
